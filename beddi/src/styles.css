@@ -1,0 +1,26 @@
+.slider-images-container:has(div:hover) > div:not(:hover) {
+  width: 20%;
+}
+
+.slider-image {
+  position: relative;
+  overflow: hidden;
+}
+
+.slider-image__body {
+  position: absolute;
+  left: 50%;
+  top: 150%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  padding: 1em;
+  width: calc(100% - 8px);
+  height: calc(100% - 8px);
+  transition-duration: 300ms;
+}
+.slider-image:hover .slider-image__body {
+  top: 50%;
+  background-color: rgba(0, 0, 0, 0.7);
+}
