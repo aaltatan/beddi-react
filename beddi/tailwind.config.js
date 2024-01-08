@@ -4,9 +4,12 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
+      colors: {
+        trans: "rgba(0, 0, 0, 0.2)",
+      },
       spacing: {
-        hero: "calc(100vh - 72px)",
-        "hero-sm": "calc(100vh - 48px)",
+        hero: "calc(100vh - 10rem)",
+        "hero-sm": "calc(100vh - 8rem)",
       },
     },
   },

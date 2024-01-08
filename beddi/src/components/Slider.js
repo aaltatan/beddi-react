@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import "../styles.css";
 import { Link } from "react-router-dom";
+import "../styles.css";
 
 export default function Slider() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/products")
+    fetch("http://localhost:3001/products")
       .then((response) => response.json())
       .then((products) => {
         products.length = 5;
@@ -14,14 +14,23 @@ export default function Slider() {
       });
   }, []);
 
-  const productsOutput = products.map((product) => {
+  const handelClick = (idx) => {
+    const images = document.querySelectorAll(`.slider-image`);
+    images.forEach((el, index) => {
+      el.classList.remove("w-4/5");
+      idx === index && el.classList.add("w-4/5");
+    });
+  };
+
+  const productsOutput = products.map((product, idx) => {
     return (
       <div
-        className="slider-image h-hero max-md:h-hero-sm w-1/5 duration-150 hover:w-3/5 "
+        className="slider-image h-hero w-1/5 cursor-pointer  duration-150 max-md:h-hero-sm"
         key={product.id}
+        onClick={() => handelClick(idx)}
       >
         <img
-          className="block h-full w-full border-4 border-white object-cover  dark:border-slate-800"
+          className="block h-full w-full border-4 border-white object-cover dark:border-slate-800"
           src={product.image}
           alt={product.description}
         />

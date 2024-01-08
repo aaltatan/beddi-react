@@ -1,5 +1,5 @@
-.slider-images-container:has(div:hover) > div:not(:hover) {
-  width: 20%;
+main > section {
+  width: min(1200px, 100%);
 }
 
 .slider-image {
@@ -10,7 +10,7 @@
 .slider-image__body {
   position: absolute;
   left: 50%;
-  top: 150%;
+  top: 50%;
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: flex-end;
@@ -19,8 +19,34 @@
   width: calc(100% - 8px);
   height: calc(100% - 8px);
   transition-duration: 300ms;
+  opacity: 0;
 }
-.slider-image:hover .slider-image__body {
-  top: 50%;
-  background-color: rgba(0, 0, 0, 0.7);
+.slider-image.w-4\/5:hover .slider-image__body {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+/*  */
+
+a .animated-nav-link {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 2rem;
+  gap: 1rem;
+  overflow: hidden;
+  font-weight: lighter;
+}
+a .animated-nav-link span {
+  text-transform: uppercase;
+  height: 100%;
+  transition-duration: 400ms;
+}
+a:not(.active) .animated-nav-link > span:last-child {
+  transform: rotate(20deg);
+  text-decoration: underline;
+  border-radius: 100vmax;
+}
+a:not(.active) .animated-nav-link:hover span {
+  transform: translateY(calc(-100% - 1rem));
 }
