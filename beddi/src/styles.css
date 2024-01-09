@@ -50,3 +50,19 @@ a:not(.active) .animated-nav-link > span:last-child {
 a:not(.active) .animated-nav-link:hover span {
   transform: translateY(calc(-100% - 1rem));
 }
+
+/*  */
+
+@keyframes fade-in {
+  0% {
+    scale: 0.5;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+.fade {
+  animation: fade-in 300ms;
+  animation-fill-mode: backwards;
+}

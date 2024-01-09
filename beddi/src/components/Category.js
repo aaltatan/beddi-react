@@ -5,7 +5,7 @@ export default function Category(props) {
   return (
     <div
       key={category.id}
-      className="before:bg-trans relative before:absolute before:left-0 before:top-0 before:h-full before:w-full"
+      className="relative before:absolute before:left-0 before:top-0 before:h-full before:w-full before:bg-trans"
     >
       <img
         className="block aspect-video object-cover"
@@ -13,7 +13,7 @@ export default function Category(props) {
         alt={category.name}
       />
       <Link to={"categories/" + category.id}>
-        <span className="absolute left-1/2 top-1/2 isolate -translate-x-1/2 -translate-y-1/2 bg-white px-4 py-2 text-center shadow-md hover:underline max-md:text-sm">
+        <span className="absolute left-1/2 top-1/2 isolate -translate-x-1/2 -translate-y-1/2 bg-white px-4 py-2 text-center shadow-md hover:underline max-sm:px-2 max-sm:py-1 max-sm:text-sm">
           {category.name}
         </span>
       </Link>

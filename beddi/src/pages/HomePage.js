@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import Slider from "../components/Slider";
 import Heading from "../components/Heading";
 import Categories from "../components/Categories";
+import Products from "../components/Products";
 
 export default function HomePage() {
   useEffect(() => {
@@ -17,6 +18,7 @@ export default function HomePage() {
       </section>
       <section className="mx-auto text-balance px-2">
         <Heading title="Products" />
+        <Products />
       </section>
     </>
   );
