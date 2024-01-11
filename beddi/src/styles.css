@@ -1,4 +1,4 @@
-main > section {
+:is(main > section, footer > section) {
   width: min(1200px, 100%);
 }
 
@@ -53,16 +53,25 @@ a:not(.active) .animated-nav-link:hover span {
 
 /*  */
 
-@keyframes fade-in {
-  0% {
-    scale: 0.5;
+@keyframes search {
+  50% {
+    opacity: 0.5;
+  }
+  60% {
+    opacity: 0.6;
+  }
+  75% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.9;
   }
   100% {
-    scale: 1;
+    opacity: 1;
+    top: 0;
   }
 }
 
-.fade {
-  animation: fade-in 300ms;
-  animation-fill-mode: backwards;
+.search-bar {
+  animation: search 300ms forwards linear;
 }

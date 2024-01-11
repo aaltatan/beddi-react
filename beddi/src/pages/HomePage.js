@@ -3,6 +3,7 @@ import Slider from "../components/Slider";
 import Heading from "../components/Heading";
 import Categories from "../components/Categories";
 import Products from "../components/Products";
+import Hero from "../components/Hero";
 
 export default function HomePage() {
   useEffect(() => {
@@ -11,7 +12,11 @@ export default function HomePage() {
 
   return (
     <>
-      <Slider />
+      <section className="mx-auto text-balance">
+        <Hero />
+        <Heading title="Last Arrivals" />
+        <Slider />
+      </section>
       <section className="mx-auto text-balance px-2">
         <Heading title="Categories" />
         <Categories />

@@ -1,25 +1,30 @@
+import PriceSpan from "./PriceSpan";
+
 export default function ProductCard(props) {
   const { product } = props;
   return (
     <div className="fade rounded-m group/x overflow-hidden shadow-md">
-      <div className="overflow-hidden">
+      <div className="relative aspect-square overflow-hidden">
+        <span className="absolute right-0 top-0 z-10 m-2">
+          <PriceSpan text={product.price.toLocaleString()} />
+        </span>
         <img
-          className="block aspect-square object-cover group-hover/x:hidden "
+          className="absolute left-0 top-0 block h-full w-full object-cover duration-300 group-hover/x:opacity-0 "
           src={product.image}
           alt={product.name.trim()}
         />
         <img
-          className="hidden aspect-square object-cover group-hover/x:block"
+          className="absolute left-0 top-0 block h-full w-full object-cover opacity-0 duration-300 group-hover/x:opacity-100"
           src={product.attachments.at(-1).path}
           alt={product.name.trim()}
         />
       </div>
-      <div className="flex items-center justify-between p-2">
-        <span className="font-light">{product.name}</span>
-        <span className="bg-orange-600 px-2 py-1 text-white">
-          {product.price.toLocaleString()}
-        </span>
-      </div>
+      <p
+        className="m-2 truncate text-end align-middle text-sm font-light md:text-base"
+        title={product.name}
+      >
+        {product.name}
+      </p>
     </div>
   );
 }

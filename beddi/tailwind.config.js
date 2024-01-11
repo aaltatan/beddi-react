@@ -12,7 +12,7 @@ module.exports = {
         "hero-sm": "calc(100vh - 8rem)",
       },
       gridTemplateColumns: {
-        aside: "200px 1fr",
+        aside: "300px 1fr",
         "aside-sm": "100px 1fr",
       },
     },

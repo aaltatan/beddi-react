@@ -1,6 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
-import { HiMenu } from "react-icons/hi";
+import { HiOutlineBars3 } from "react-icons/hi2";
+import { HiMagnifyingGlass } from "react-icons/hi2";
 import IconHover from "./IconHover";
+import SearchBar from "./SearchBar";
+import { useState } from "react";
+import { HiMiniXMark } from "react-icons/hi2";
 
 export default function Navbar() {
   const links = [
@@ -8,6 +12,8 @@ export default function Navbar() {
     { title: "Products", path: "products" },
     { title: "Categories", path: "categories" },
   ];
+
+  const [isActiveSearch, setIsActiveSearch] = useState(false);
 
   const linksOutput = links.map((el, idx) => {
     return (
@@ -33,12 +39,19 @@ export default function Navbar() {
   };
 
   return (
-    <header className="sticky left-0 top-0 z-10 w-full select-none shadow-md">
-      {/* <ul className="line h-8 bg-green-900 text-white">
-        <li>Hello World</li>
-        <li>kfna;lksfnlas</li>
-        <li>kfna;lksfnlas</li>
-      </ul> */}
+    <header className="sticky left-0 top-0 z-50 w-full select-none shadow-md">
+      {isActiveSearch && (
+        <SearchBar>
+          <span
+            className="absolute right-0 top-0 m-10 cursor-pointer text-2xl"
+            onClick={() => setIsActiveSearch(false)}
+          >
+            <IconHover>
+              <HiMiniXMark />
+            </IconHover>
+          </span>
+        </SearchBar>
+      )}
       <nav className="relative flex items-center gap-x-4 bg-white p-3 dark:bg-slate-800 md:p-5">
         <Link to="/">
           <h1 className="uppercase md:text-2xl">Beddi Shop</h1>
@@ -49,10 +62,17 @@ export default function Navbar() {
         >
           {linksOutput}
         </ul>
-        <div className="ms-auto md:hidden" onClick={() => navLinksHandler()}>
-          <IconHover>
-            <HiMenu />
-          </IconHover>
+        <div className="ms-auto flex max-w-fit items-center gap-x-4">
+          <div onClick={() => setIsActiveSearch(!isActiveSearch)}>
+            <IconHover>
+              <HiMagnifyingGlass className="text-xl" />
+            </IconHover>
+          </div>
+          <div className="md:hidden" onClick={() => navLinksHandler()}>
+            <IconHover>
+              <HiOutlineBars3 className="text-xl" />
+            </IconHover>
+          </div>
         </div>
       </nav>
     </header>
