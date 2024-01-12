@@ -5,11 +5,12 @@ export default function Category(props) {
   return (
     <div
       key={category.id}
-      className="group/y relative before:absolute before:left-0 before:top-0 before:h-full before:w-full before:bg-trans"
+      className="group/y relative aspect-video w-full before:absolute before:left-0 before:top-0 before:h-full before:w-full before:bg-trans"
     >
       <div className=" overflow-hidden">
         <img
-          className="block aspect-video object-cover duration-150 group-hover/y:rotate-6 group-hover/y:scale-125"
+          loading="lazy"
+          className="block  object-cover duration-150 group-hover/y:rotate-6 group-hover/y:scale-125"
           src={category.image}
           alt={category.name}
         />

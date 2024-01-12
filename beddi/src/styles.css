@@ -20,10 +20,16 @@
   height: calc(100% - 8px);
   transition-duration: 300ms;
   opacity: 0;
+  a {
+    display: none;
+  }
 }
 .slider-image.w-4\/5:hover .slider-image__body {
   opacity: 1;
   background-color: rgba(0, 0, 0, 0.6);
+  a {
+    display: block;
+  }
 }
 
 /*  */

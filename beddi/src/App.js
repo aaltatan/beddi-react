@@ -8,16 +8,31 @@ import "./styles.css";
 
 // layout
 import MainLayout from "./layouts/MainLayout";
+import ProductLayout from "./layouts/ProductLayout";
 
 // pages
 import NotFound from "./pages/NotFound";
 import HomePage from "./pages/HomePage";
+import ProductsPage from "./pages/product/ProductsPage";
+import ProductPage from "./pages/product/ProductPage";
 
 const router = createBrowserRouter(
   createRoutesFromChildren(
     <Route path="/" element={<MainLayout />}>
       <Route index element={<HomePage />} />
-      <Route path="*" element={<NotFound />} />
+      <Route path="products" element={<ProductLayout />}>
+        <Route index element={<ProductsPage />} />
+        <Route path=":productId" element={<ProductPage />} />
+      </Route>
+      <Route
+        path="*"
+        element={
+          <NotFound
+            header="Page not found"
+            message="Sorry, we couldn't find the page you are looking for."
+          />
+        }
+      />
     </Route>,
   ),
 );

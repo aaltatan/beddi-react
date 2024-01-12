@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 import ProductCardSkeleton from "./ProductCardSkeleton";
+import { HiArrowPath } from "react-icons/hi2";
 
 export default function Products() {
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
   const [activeCategory, setActiveCategory] = useState(0);
+  let [btnStatus, setBtnStatus] = useState("pending");
   let [status, setStatus] = useState(false);
   let [activePage, setActivePage] = useState(1);
   const LIMIT = 8;
@@ -56,6 +58,7 @@ export default function Products() {
         products = products.data;
         setProducts(products);
         setStatus(true);
+        setBtnStatus("loaded");
       });
   }, [activeCategory, activePage]);
 
@@ -87,10 +90,18 @@ export default function Products() {
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">{output}</div>
         {status && products.length && products.length % LIMIT === 0 ? (
           <button
-            className="mx-auto my-4 block bg-orange-600 px-4 py-2 text-white hover:bg-orange-700"
-            onClick={() => setActivePage(++activePage)}
+            className="mx-auto my-4 flex items-center gap-1 bg-orange-600 px-4 py-2 text-white hover:bg-orange-700"
+            onClick={() => {
+              setActivePage(++activePage);
+              setBtnStatus("loading");
+            }}
           >
-            Load more
+            {btnStatus === "loading" && (
+              <span className="animate-spin">
+                <HiArrowPath />
+              </span>
+            )}
+            <span>Load more</span>
           </button>
         ) : (
           <span></span>

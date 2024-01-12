@@ -41,9 +41,9 @@ export default function Navbar() {
   return (
     <header className="sticky left-0 top-0 z-50 w-full select-none shadow-md">
       {isActiveSearch && (
-        <SearchBar>
+        <SearchBar func={setIsActiveSearch}>
           <span
-            className="absolute right-0 top-0 m-10 cursor-pointer text-2xl"
+            className="absolute right-0 top-0 m-6 cursor-pointer text-2xl lg:m-10"
             onClick={() => setIsActiveSearch(false)}
           >
             <IconHover>
