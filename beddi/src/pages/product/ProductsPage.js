@@ -1,6 +1,5 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
 
 export default function ProductsPage() {
-  return <Outlet></Outlet>;
+  return <div>ProductsPage</div>;
 }

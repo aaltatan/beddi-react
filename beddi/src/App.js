@@ -14,7 +14,9 @@ import ProductLayout from "./layouts/ProductLayout";
 import NotFound from "./pages/NotFound";
 import HomePage from "./pages/HomePage";
 import ProductsPage from "./pages/product/ProductsPage";
-import ProductPage from "./pages/product/ProductPage";
+
+// loaders
+import ProductPage, { productLoader } from "./pages/product/ProductPage";
 
 const router = createBrowserRouter(
   createRoutesFromChildren(
@@ -22,7 +24,17 @@ const router = createBrowserRouter(
       <Route index element={<HomePage />} />
       <Route path="products" element={<ProductLayout />}>
         <Route index element={<ProductsPage />} />
-        <Route path=":productId" element={<ProductPage />} />
+        <Route
+          path=":productId"
+          element={<ProductPage />}
+          loader={productLoader}
+          errorElement={
+            <NotFound
+              header="Product not found"
+              message="Sorry, we cloud not find the product you are looking for."
+            />
+          }
+        />
       </Route>
       <Route
         path="*"
