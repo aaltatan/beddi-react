@@ -1,10 +1,10 @@
 import Social from "./Social";
-import { DataContext } from "../Context/DataProvider";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
+import { DataState } from "../state/atoms/DataState";
+import { useRecoilState } from "recoil";
 
 export default function Hero() {
-  const data = useContext(DataContext);
+  const data = useRecoilState(DataState)[0];
 
   let criteria = Boolean(Object.keys(data).length);
 

@@ -1,15 +1,15 @@
-import { useContext } from "react";
 import Category from "./Category";
-import { DataContext } from "../Context/DataProvider";
-import { ProductsContext } from "../Context/AllProductsProvider";
+import { useRecoilState } from "recoil";
+import { ProductState } from "../state/atoms/ProductsState";
+import { DataState } from "../state/atoms/DataState";
 
 export default function Categories() {
-  const data = useContext(DataContext);
+  const data = useRecoilState(DataState)[0];
   let criteria = Boolean(Object.keys(data).length);
   const categories =
     criteria &&
     data.categories.filter((category) => category.products_count > 2);
-  const products = useContext(ProductsContext);
+  const products = useRecoilState(ProductState)[0];
 
   let categoriesOutput =
     criteria &&

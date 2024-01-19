@@ -1,15 +1,16 @@
-import { useContext } from "react";
 import { Link } from "react-router-dom";
 import PriceSpan from "./PriceSpan";
-import { DataContext } from "../Context/DataProvider";
+import { DataState } from "../state/atoms/DataState";
+import { useRecoilState } from "recoil";
 
 export default function Slider() {
-  let data = useContext(DataContext);
+  const data = useRecoilState(DataState)[0];
   let criteria = Object.keys(data).length;
   let products = [];
+  let newProducts;
   if (criteria) {
     products = data.products;
-    products.length = 5;
+    newProducts = products.slice(0, 5);
   }
 
   const handelClick = (idx) => {
@@ -25,7 +26,7 @@ export default function Slider() {
   );
 
   const productsOutput = products.length
-    ? products.map((product, idx) => {
+    ? newProducts.map((product, idx) => {
         return (
           <div
             className="slider-image h-hero w-1/5 cursor-pointer  duration-150 max-md:h-hero-sm"

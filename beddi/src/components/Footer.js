@@ -1,12 +1,12 @@
-import { useContext } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { FaPhoneFlip } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import Social from "./Social";
-import { DataContext } from "../Context/DataProvider";
+import { DataState } from "../state/atoms/DataState";
+import { useRecoilState } from "recoil";
 
 export default function Footer() {
-  const data = useContext(DataContext);
+  const data = useRecoilState(DataState)[0];
 
   let criteria = Boolean(Object.keys(data).length);
 

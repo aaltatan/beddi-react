@@ -39,7 +39,7 @@ export default function ProductPage() {
         setSameCategoryProducts(products);
         setLoaded(true);
       });
-  }, []);
+  }, [product.category_id]);
 
   const attachments =
     product &&
